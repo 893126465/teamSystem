@@ -3,7 +3,7 @@
         <div>
             <div style="display: flex;justify-content: space-between">
                 <div>
-                    <el-input placeholder="请输入员工名进行搜索，可以直接回车搜索..." prefix-icon="el-icon-search"
+                    <el-input placeholder="请输入成员人名进行搜索，可以直接回车搜索..." prefix-icon="el-icon-search"
                               clearable
                               @clear="initEmps"
                               style="width: 350px;margin-right: 10px" v-model="keyword"
@@ -43,8 +43,8 @@
                      style="border: 1px solid #409eff;border-radius: 5px;box-sizing: border-box;padding: 5px;margin: 10px 0px;">
                     <el-row>
                         <el-col :span="5">
-                            政治面貌:
-                            <el-select v-model="searchValue.politicId" placeholder="政治面貌" size="mini"
+                            研究方向:
+                            <el-select v-model="searchValue.politicId" placeholder="研究方向" size="mini"
                                        style="width: 130px;">
                                 <el-option
                                         v-for="item in politicsstatus"
@@ -90,19 +90,20 @@
                             </el-select>
                         </el-col>
                         <el-col :span="7">
-                            聘用形式:
+                            人员类型:
                             <el-radio-group v-model="searchValue.engageForm">
-                                <el-radio label="劳动合同">劳动合同</el-radio>
-                                <el-radio label="劳务合同">劳务合同</el-radio>
+                                <el-radio label="研究生">研究生</el-radio>
+                                <el-radio label="助理">助理</el-radio>
+                                <el-radio label="导师">导师</el-radio>
                             </el-radio-group>
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 10px">
                         <el-col :span="5">
-                            所属部门:
+                            所属项目小组:
                             <el-popover
                                     placement="right"
-                                    title="请选择部门"
+                                    title="请选择项目小组"
                                     width="200"
                                     trigger="manual"
                                     v-model="popVisible2">
@@ -115,7 +116,7 @@
                             </el-popover>
                         </el-col>
                         <el-col :span="10">
-                            入职日期:
+                            入学/入职日期:
                             <el-date-picker
                                     v-model="searchValue.beginDateScope"
                                     type="daterange"
@@ -158,7 +159,7 @@
                 </el-table-column>
                 <el-table-column
                         prop="workID"
-                        label="工号"
+                        label="工号/学号"
                         align="left"
                         width="85">
                 </el-table-column>
@@ -183,7 +184,7 @@
                 <el-table-column
                         prop="wedlock"
                         width="70"
-                        label="婚姻状况">
+                        label="目前住址">
                 </el-table-column>
                 <el-table-column
                         prop="nation.name"
@@ -197,7 +198,7 @@
                 </el-table-column>
                 <el-table-column
                         prop="politicsstatus.name"
-                        label="政治面貌">
+                        label="研究方向">
                 </el-table-column>
                 <el-table-column
                         prop="email"
@@ -221,7 +222,7 @@
                         prop="department.name"
                         width="100"
                         align="left"
-                        label="所属部门">
+                        label="所属项目小组">
                 </el-table-column>
                 <el-table-column
                         prop="position.name"
@@ -237,7 +238,7 @@
                         prop="engageForm"
                         width="100"
                         align="left"
-                        label="聘用形式">
+                        label="人员类型">
                 </el-table-column>
                 <el-table-column
                         prop="tiptopDegree"
@@ -261,30 +262,30 @@
                         prop="beginDate"
                         width="95"
                         align="left"
-                        label="入职日期">
+                        label="入学/入职日期">
                 </el-table-column>
-                <el-table-column
-                        prop="conversionTime"
-                        width="95"
-                        align="left"
-                        label="转正日期">
-                </el-table-column>
+<!--                <el-table-column-->
+<!--                        prop="conversionTime"-->
+<!--                        width="95"-->
+<!--                        align="left"-->
+<!--                        label="转正日期">-->
+<!--                </el-table-column>-->
                 <el-table-column
                         prop="beginContract"
                         width="95"
                         align="left"
-                        label="合同起始日期">
+                        label="目前负责项目起始日期">
                 </el-table-column>
                 <el-table-column
                         prop="endContract"
                         width="95"
                         align="left"
-                        label="合同截止日期">
+                        label="目前负责项目截止日期">
                 </el-table-column>
                 <el-table-column
                         width="100"
                         align="left"
-                        label="合同期限">
+                        label="项目期限">
                     <template slot-scope="scope">
                         <el-tag>{{scope.row.contractTerm}}</el-tag>
                         年
@@ -322,7 +323,7 @@
                         <el-col :span="6">
                             <el-form-item label="姓名:" prop="name">
                                 <el-input size="mini" style="width: 150px" prefix-icon="el-icon-edit" v-model="emp.name"
-                                          placeholder="请输入员工姓名"></el-input>
+                                          placeholder="请输入成员姓名"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="5">
@@ -346,8 +347,8 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="7">
-                            <el-form-item label="政治面貌:" prop="politicId">
-                                <el-select v-model="emp.politicId" placeholder="政治面貌" size="mini" style="width: 200px;">
+                            <el-form-item label="研究方向:" prop="politicId">
+                                <el-select v-model="emp.politicId" placeholder="研究方向" size="mini" style="width: 200px;">
                                     <el-option
                                             v-for="item in politicsstatus"
                                             :key="item.id"
@@ -416,10 +417,10 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="6">
-                            <el-form-item label="所属部门:" prop="departmentId">
+                            <el-form-item label="所属项目小组:" prop="departmentId">
                                 <el-popover
                                         placement="right"
-                                        title="请选择部门"
+                                        title="请选择项目小组"
                                         width="200"
                                         trigger="manual"
                                         v-model="popVisible">
@@ -441,7 +442,7 @@
                     </el-row>
                     <el-row>
                         <el-col :span="6">
-                            <el-form-item label="工号:" prop="workID">
+                            <el-form-item label="工号/学号:" prop="workID">
                                 <el-input size="mini" style="width: 150px" prefix-icon="el-icon-edit"
                                           v-model="emp.workID" placeholder="工号" disabled></el-input>
                             </el-form-item>
@@ -474,50 +475,50 @@
                     </el-row>
                     <el-row>
                         <el-col :span="6">
-                            <el-form-item label="入职日期:" prop="beginDate">
+                            <el-form-item label="入学/入职日期:" prop="beginDate">
                                 <el-date-picker
                                         v-model="emp.beginDate"
                                         size="mini"
                                         type="date"
                                         value-format="yyyy-MM-dd"
                                         style="width: 130px;"
-                                        placeholder="入职日期">
+                                        placeholder="入学/入职日期">
                                 </el-date-picker>
                             </el-form-item>
                         </el-col>
+<!--                        <el-col :span="6">-->
+<!--                            <el-form-item label="转正日期:" prop="conversionTime">-->
+<!--                                <el-date-picker-->
+<!--                                        v-model="emp.conversionTime"-->
+<!--                                        size="mini"-->
+<!--                                        type="date"-->
+<!--                                        value-format="yyyy-MM-dd"-->
+<!--                                        style="width: 130px;"-->
+<!--                                        placeholder="转正日期">-->
+<!--                                </el-date-picker>-->
+<!--                            </el-form-item>-->
+<!--                        </el-col>-->
                         <el-col :span="6">
-                            <el-form-item label="转正日期:" prop="conversionTime">
-                                <el-date-picker
-                                        v-model="emp.conversionTime"
-                                        size="mini"
-                                        type="date"
-                                        value-format="yyyy-MM-dd"
-                                        style="width: 130px;"
-                                        placeholder="转正日期">
-                                </el-date-picker>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="6">
-                            <el-form-item label="合同起始日期:" prop="beginContract">
+                            <el-form-item label="目前负责项目起始日期:" prop="beginContract">
                                 <el-date-picker
                                         v-model="emp.beginContract"
                                         size="mini"
                                         type="date"
                                         value-format="yyyy-MM-dd"
                                         style="width: 130px;"
-                                        placeholder="合同起始日期">
+                                        placeholder="目前负责项目起始日期">
                                 </el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="6">
-                            <el-form-item label="合同终止日期:" prop="endContract">
+                            <el-form-item label="目前负责项目截止日期:" prop="endContract">
                                 <el-date-picker
                                         v-model="emp.endContract"
                                         size="mini"
                                         type="date"
                                         value-format="yyyy-MM-dd"
                                         style="width: 150px;"
-                                        placeholder="合同终止日期">
+                                        placeholder="目前负责项目截止日期">
                                 </el-date-picker>
                             </el-form-item>
                         </el-col>
@@ -530,19 +531,20 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="聘用形式:" prop="engageForm">
+                            <el-form-item label="人员类型:" prop="engageForm">
                                 <el-radio-group v-model="emp.engageForm">
-                                    <el-radio label="劳动合同">劳动合同</el-radio>
-                                    <el-radio label="劳务合同">劳务合同</el-radio>
+                                    <el-radio label="研究生">研究生</el-radio>
+                                    <el-radio label="助理">助理</el-radio>
+                                    <el-radio label="导师">导师</el-radio>
                                 </el-radio-group>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="婚姻状况:" prop="wedlock">
+                            <el-form-item label="目前住址:" prop="wedlock">
                                 <el-radio-group v-model="emp.wedlock">
-                                    <el-radio label="已婚">已婚</el-radio>
-                                    <el-radio label="未婚">未婚</el-radio>
-                                    <el-radio label="离异">离异</el-radio>
+<!--                                    <el-radio label="已婚">已婚</el-radio>-->
+<!--                                    <el-radio label="未婚">未婚</el-radio>-->
+<!--                                    <el-radio label="离异">离异</el-radio>-->
                                 </el-radio-group>
                             </el-form-item>
                         </el-col>
@@ -607,7 +609,7 @@
                     value: '选项5',
                     label: '北京烤鸭'
                 }],
-                inputDepName: '所属部门',
+                inputDepName: '所属项目小组',
                 emp: {
                     name: "javaboy",
                     gender: "男",
@@ -868,7 +870,7 @@
             },
             showAddEmpView() {
                 this.emptyEmp();
-                this.title = '添加员工';
+                this.title = '添加成员';
                 this.getMaxWordID();
                 this.dialogVisible = true;
             },
