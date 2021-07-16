@@ -9,7 +9,8 @@
                 <el-table-column prop="phone" label="电话号码" width="120" align="left"></el-table-column>
                 <el-table-column prop="department.name" label="所属部门" width="120" align="left"></el-table-column>
                 <el-table-column label="所属部门" align="center">
-                    <template slot-scope="scope">
+
+                  <template slot-scope="scope">
                         <el-tooltip placement="right" v-if="scope.row.salary">
                             <div slot="content">
                                 <table>

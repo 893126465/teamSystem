@@ -2,7 +2,7 @@
     <div>
         <el-container>
             <el-header class="homeHeader">
-                <div class="title">微人事</div>
+                <div class="title">大数据安全与智能分析团队管理系统</div>
                 <div>
                     <el-button icon="el-icon-bell" type="text" style="margin-right: 8px;color: #000000;" size="normal" @click="goChat"></el-button>
                     <el-dropdown class="userInfo" @command="commandHandler">
@@ -18,6 +18,7 @@
                 </div>
             </el-header>
             <el-container>
+
                 <el-aside width="200px">
                     <el-menu router unique-opened>
                         <el-submenu :index="index+''" v-for="(item,index) in routes" v-if="!item.hidden" :key="index">
@@ -31,16 +32,19 @@
                         </el-submenu>
                     </el-menu>
                 </el-aside>
+
                 <el-main>
+
                     <el-breadcrumb separator-class="el-icon-arrow-right" v-if="this.$router.currentRoute.path!='/home'">
                         <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
                         <el-breadcrumb-item>{{this.$router.currentRoute.name}}</el-breadcrumb-item>
                     </el-breadcrumb>
                     <div class="homeWelcome" v-if="this.$router.currentRoute.path=='/home'">
-                        欢迎来到微人事！
+                        欢迎登陆
                     </div>
                     <router-view class="homeRouterView"/>
                 </el-main>
+
             </el-container>
         </el-container>
     </div>
