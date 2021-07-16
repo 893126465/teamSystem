@@ -1,6 +1,6 @@
 <template>
     <div>
-        工资表查询
+        成果管理
     </div>
 </template>
 
