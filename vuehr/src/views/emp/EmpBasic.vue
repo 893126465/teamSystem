@@ -181,11 +181,11 @@
                         align="left"
                         label="身份证号码">
                 </el-table-column>
-                <el-table-column
-                        prop="wedlock"
-                        width="70"
-                        label="目前住址">
-                </el-table-column>
+<!--                <el-table-column-->
+<!--                        prop="wedlock"-->
+<!--                        width="70"-->
+<!--                        label="目前住址">-->
+<!--                </el-table-column>-->
                 <el-table-column
                         prop="nation.name"
                         width="50"
@@ -539,15 +539,15 @@
                                 </el-radio-group>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="8">
-                            <el-form-item label="目前住址:" prop="wedlock">
-                                <el-radio-group v-model="emp.wedlock">
+<!--                        <el-col :span="8">-->
+<!--                            <el-form-item label="目前住址:" prop="wedlock">-->
+<!--                                <el-radio-group v-model="emp.wedlock">-->
 <!--                                    <el-radio label="已婚">已婚</el-radio>-->
 <!--                                    <el-radio label="未婚">未婚</el-radio>-->
 <!--                                    <el-radio label="离异">离异</el-radio>-->
-                                </el-radio-group>
-                            </el-form-item>
-                        </el-col>
+<!--                                </el-radio-group>-->
+<!--                            </el-form-item>-->
+<!--                        </el-col>-->
                     </el-row>
                 </el-form>
             </div>
